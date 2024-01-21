@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimationScript : MonoBehaviour
@@ -21,10 +19,6 @@ public class AnimationScript : MonoBehaviour
     void Update()
     {
         anim.SetBool("onGround", coll.onGround);
-        //anim.SetBool("onWall", coll.onWall);
-        //anim.SetBool("onRightWall", coll.onRightWall);
-        anim.SetBool("wallGrab", move.wallGrab);
-        anim.SetBool("wallSlide", move.wallSlide);
         anim.SetBool("canMove", move.canMove);
         anim.SetBool("isDashing", move.isDashing);
 
@@ -44,18 +38,6 @@ public class AnimationScript : MonoBehaviour
 
     public void Flip(int side)
     {
-
-        if (move.wallGrab || move.wallSlide)
-        {
-            if (side == -1 && sr.flipX)
-                return;
-
-            if (side == 1 && !sr.flipX)
-            {
-                return;
-            }
-        }
-
         bool state = (side == 1) ? false : true;
         sr.flipX = state;
     }
