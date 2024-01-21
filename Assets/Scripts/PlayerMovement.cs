@@ -119,7 +119,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && !hasDashed)
         {
-            if (xRaw != 0 || yRaw != 0)
+            if (xRaw != 0 || yRaw != 0 && !wallSlide)
                 Dash(xRaw, yRaw);
         }
 
