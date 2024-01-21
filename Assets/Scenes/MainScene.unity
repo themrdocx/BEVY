@@ -290,7 +290,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5.625
+  orthographic size: 5.34375
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -15672,10 +15672,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   onGround: 0
-  onWall: 0
-  onRightWall: 0
-  onLeftWall: 0
-  wallSide: 0
   collisionRadius: 0.1
   bottomOffset: {x: 0, y: -0.79}
   rightOffset: {x: 0.38, y: -0.33}
