@@ -13,8 +13,8 @@ public class RoomController : MonoBehaviour
       Debug.Assert(virtualCamera!=null,"NO VIRTUAL CAMERA ADDED TO ROOM : "+gameObject.name);
       virtualCamera.gameObject.SetActive(false);
 
-      startFlag = GetComponentInChildren<StartFlag>();
-      Debug.Assert(startFlag!=null,"NO START FLAG ADDED TO ROOM : "+ gameObject.name);
+      //startFlag = GetComponentInChildren<StartFlag>();
+      //Debug.Assert(startFlag!=null,"NO START FLAG ADDED TO ROOM : "+ gameObject.name);
    }
 
    private void OnTriggerEnter2D(Collider2D other)
