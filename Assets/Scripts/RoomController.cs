@@ -14,19 +14,22 @@ public class RoomController : MonoBehaviour
       virtualCamera.gameObject.SetActive(false);
 
       startFlag = GetComponentInChildren<StartFlag>();
-      //Debug.Assert(startFlag!=null,"NO START FLAG ADDED TO ROOM : "+ gameObject.name);
+      Debug.Assert(startFlag!=null,"NO START FLAG ADDED TO ROOM : "+ gameObject.name);
    }
 
    private void OnTriggerEnter2D(Collider2D other)
    {
-      if (other.gameObject.GetComponent<Player>() && !other.isTrigger)
+      var player = other.gameObject.GetComponent<Player>();
+      if ( player && !other.isTrigger)
       {
+         player.SetCurrentRespawnPoint(startFlag);
          virtualCamera.gameObject.SetActive(true);
       }
    }
    private void OnTriggerExit2D(Collider2D other)
    {
-      if (other.gameObject.GetComponent<Player>() && !other.isTrigger)
+      var player = other.gameObject.GetComponent<Player>();
+      if (player && !other.isTrigger)
       {
          virtualCamera.gameObject.SetActive(false);
       }
