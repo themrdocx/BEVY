@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 10;
     public float jumpForce = 50;
     public float slideSpeed = 5;
+    public int dashCount = 1;
     public float wallJumpLerp = 10;
     public float dashSpeed = 20;
 
@@ -123,6 +124,7 @@ public class PlayerMovement : MonoBehaviour
     void GroundTouch()
     {
         hasDashed = false;
+        dashCount = 1;
         isDashing = false;
 
         side = anim.sr.flipX ? -1 : 1;
@@ -135,8 +137,10 @@ public class PlayerMovement : MonoBehaviour
         Camera.main.transform.DOComplete();
         Camera.main.transform.DOShakePosition(.2f, .5f, 14, 90, false, true);
 
-        hasDashed = true;
-
+        dashCount--;
+        if(dashCount<=1)
+            hasDashed = true;
+        
         anim.SetTrigger("dash");
 
         rb.velocity = Vector2.zero;
@@ -170,7 +174,10 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(.15f);
         if (coll.onGround)
+        {
+            dashCount = 1;
             hasDashed = false;
+        }
     }
     
     private void Walk(Vector2 dir)
@@ -200,6 +207,18 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity += dir * jumpForce;
 
         particle.Play();
+    }
+
+    public bool IncrementDash(int count)
+    {
+        if (hasDashed)
+        {
+            dashCount += count;
+            hasDashed = false;
+            return true;
+        }
+
+        return false;
     }
 
     IEnumerator DisableMovement(float time)

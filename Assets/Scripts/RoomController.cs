@@ -20,6 +20,12 @@ public class RoomController : MonoBehaviour
    private void OnTriggerEnter2D(Collider2D other)
    {
       var player = other.gameObject.GetComponent<Player>();
+
+      if (!player)
+      {
+         player = other.gameObject.GetComponentInChildren<Player>();
+      }
+
       if ( player && !other.isTrigger)
       {
          player.SetCurrentRespawnPoint(startFlag);
