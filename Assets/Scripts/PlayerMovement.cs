@@ -60,19 +60,19 @@ public class PlayerMovement : MonoBehaviour
         Walk(dir);
         anim.SetHorizontalMovement(x, y, rb.velocity.y);
 
-        if (coll.onWall && Input.GetButton("Fire3") && canMove)
+        /*if (coll.onWall && Input.GetButton("Fire3") && canMove)
         {
             if (side != coll.wallSide)
                 anim.Flip(side * -1);
             wallGrab = true;
             wallSlide = false;
-        }
+        }*/
 
-        if (Input.GetButtonUp("Fire3") || !coll.onWall || !canMove)
+        /*if (Input.GetButtonUp("Fire3") || !coll.onWall || !canMove)
         {
             wallGrab = false;
             wallSlide = false;
-        }
+        }*/
 
         if (coll.onGround && !isDashing)
         {
@@ -95,17 +95,17 @@ public class PlayerMovement : MonoBehaviour
             rb.gravityScale = 3;
         }
 
-        if (coll.onWall && !coll.onGround)
+        /*if (coll.onWall && !coll.onGround)
         {
             if (x != 0 && !wallGrab)
             {
                 wallSlide = true;
                 WallSlide();
             }
-        }
+        }*/
 
-        if (!coll.onWall || coll.onGround)
-            wallSlide = false;
+        /*if (!coll.onWall || coll.onGround)
+            wallSlide = false;*/
 
         if (Input.GetButtonDown("Jump"))
         {
@@ -113,8 +113,8 @@ public class PlayerMovement : MonoBehaviour
 
             if (coll.onGround)
                 Jump(Vector2.up, false);
-            if (coll.onWall && !coll.onGround)
-                WallJump();
+            /*if (coll.onWall && !coll.onGround)
+                WallJump();*/
         }
 
         if (Input.GetButtonDown("Fire1") && !hasDashed)
@@ -134,7 +134,7 @@ public class PlayerMovement : MonoBehaviour
             groundTouch = false;
         }
 
-        WallParticle(y);
+        //WallParticle(y);
 
         if (wallGrab || wallSlide || !canMove)
             return;
@@ -208,7 +208,7 @@ public class PlayerMovement : MonoBehaviour
             hasDashed = false;
     }
 
-    private void WallJump()
+    /*private void WallJump()
     {
         if ((side == 1 && coll.onRightWall) || side == -1 && !coll.onRightWall)
         {
@@ -224,8 +224,9 @@ public class PlayerMovement : MonoBehaviour
         Jump((Vector2.up / 1.5f + wallDir / 1.5f), true);
 
         wallJumped = true;
-    }
+    }*/
 
+    /*
     private void WallSlide()
     {
         if (coll.wallSide != side)
@@ -243,6 +244,7 @@ public class PlayerMovement : MonoBehaviour
 
         rb.velocity = new Vector2(push, -slideSpeed);
     }
+    */
 
     private void Walk(Vector2 dir)
     {
@@ -264,7 +266,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump(Vector2 dir, bool wall)
     {
-        slideParticle.transform.parent.localScale = new Vector3(ParticleSide(), 1, 1);
+        //slideParticle.transform.parent.localScale = new Vector3(ParticleSide(), 1, 1);
+        slideParticle.transform.parent.localScale = new Vector3(-1, 1, 1);
         ParticleSystem particle = wall ? wallJumpParticle : jumpParticle;
 
         rb.velocity = new Vector2(rb.velocity.x, 0);
@@ -285,7 +288,7 @@ public class PlayerMovement : MonoBehaviour
         rb.drag = x;
     }
 
-    void WallParticle(float vertical)
+    /*void WallParticle(float vertical)
     {
         var main = slideParticle.main;
 
@@ -298,11 +301,11 @@ public class PlayerMovement : MonoBehaviour
         {
             main.startColor = Color.clear;
         }
-    }
+    }*/
 
-    int ParticleSide()
+    /*int ParticleSide()
     {
         int particleSide = coll.onRightWall ? 1 : -1;
         return particleSide;
-    }
+    }*/
 }
