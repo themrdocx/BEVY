@@ -37,8 +37,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Polish")]
     public ParticleSystem dashParticle;
     public ParticleSystem jumpParticle;
-    public ParticleSystem wallJumpParticle;
-    public ParticleSystem slideParticle;
+
 
     // Start is called before the first frame update
     void Start()
@@ -266,9 +265,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump(Vector2 dir, bool wall)
     {
-        //slideParticle.transform.parent.localScale = new Vector3(ParticleSide(), 1, 1);
-        slideParticle.transform.parent.localScale = new Vector3(-1, 1, 1);
-        ParticleSystem particle = wall ? wallJumpParticle : jumpParticle;
+
+        ParticleSystem particle = jumpParticle;
 
         rb.velocity = new Vector2(rb.velocity.x, 0);
         rb.velocity += dir * jumpForce;
