@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
@@ -30,6 +31,10 @@ public class PlayerMovement : MonoBehaviour
 
     private bool groundTouch;
     private bool hasDashed;
+    
+    public event Action Landed;
+    public event Action Dashed;
+    public event Action Jumped;
 
     public int side = 1;
 
@@ -121,6 +126,7 @@ public class PlayerMovement : MonoBehaviour
 
     void GroundTouch()
     {
+        Landed?.Invoke();
         hasDashed = false;
         dashCount = 1;
         isDashing = false;
@@ -140,6 +146,7 @@ public class PlayerMovement : MonoBehaviour
             hasDashed = true;
         
         anim.SetTrigger("dash");
+        Dashed?.Invoke();
 
         rb.velocity = Vector2.zero;
         Vector2 dir = new Vector2(x, y);
@@ -198,9 +205,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump(Vector2 dir, bool wall)
     {
-    
+        Jumped?.Invoke();
         ParticleSystem particle = jumpParticle;
-
         rb.velocity = new Vector2(rb.velocity.x, 0);
         rb.velocity += dir * jumpForce;
 
