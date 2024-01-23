@@ -5,6 +5,7 @@ public class AnimationScript : MonoBehaviour
     private Animator anim;
     private PlayerMovement move;
     private Collision coll;
+    
     [HideInInspector]
     public SpriteRenderer sr;
 
@@ -13,6 +14,7 @@ public class AnimationScript : MonoBehaviour
         anim = GetComponent<Animator>();
         coll = GetComponentInParent<Collision>();
         move = GetComponentInParent<PlayerMovement>();
+        
         sr = GetComponent<SpriteRenderer>();
     }
 

@@ -28,7 +28,7 @@ public class RoomController : MonoBehaviour
 
       if ( player && !other.isTrigger)
       {
-         player.SetCurrentRespawnPoint(startFlag);
+         player.OnRoomSwitch(startFlag,virtualCamera);
          virtualCamera.gameObject.SetActive(true);
       }
    }
