@@ -89,8 +89,11 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetTrigger("jump");
 
-            if (coll.onGround)
+            if (coll.coyoteTimeCounter > 0)
+            {
                 Jump(Vector2.up, false);
+                coll.coyoteTimeCounter = 0;
+            }
         }
 
         if (Input.GetButtonDown("Fire1") && !hasDashed)
@@ -143,7 +146,6 @@ public class PlayerMovement : MonoBehaviour
     {
         Camera.main.transform.DOComplete();
         Camera.main.transform.DOShakePosition(.2f, .5f, 14, 90, false, true);
-
         dashCount--;
         if(dashCount<=1)
             hasDashed = true;

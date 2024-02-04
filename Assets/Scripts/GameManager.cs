@@ -1,3 +1,5 @@
+using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
@@ -14,6 +16,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject gameUI;
 
+    [SerializeField] private TextMeshProUGUI timerText;
+
+    private int hours;
+    private int minutes;
+    private float seconds;
+
     private void Awake()
     {
         if(instance!=null)
@@ -24,6 +32,26 @@ public class GameManager : MonoBehaviour
         }
         
         SetVolume();
+    }
+
+    private void Update()
+    {
+        if(isGamePaused)
+            return;
+
+        seconds += Time.deltaTime;
+        if (seconds >= 60)
+        {
+            minutes++;
+            seconds = 0;
+        }
+        if(minutes>=60)
+        {
+            minutes = 0;
+            hours++;
+        }
+
+        timerText.text = String.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
     }
 
     private void SetVolume()

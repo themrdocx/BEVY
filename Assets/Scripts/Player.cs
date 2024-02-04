@@ -43,12 +43,14 @@ public class Player : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.R) && !isDead)
         {
-            ResetToLastPlayerFlag();
+            cameraFade.ActivateFade();
+            cameraFade.OnFadeCompleteCallback += ResetToLastPlayerFlag;
         }
     }
 
     private void ResetToLastPlayerFlag()
     {
+        cameraFade.OnFadeCompleteCallback -= ResetToLastPlayerFlag;
         transform.position = currentRespawnPoint.transform.position;
     }
 

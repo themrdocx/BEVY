@@ -11,6 +11,10 @@ public class Collision : MonoBehaviour
 
     public bool onGround;
 
+    [SerializeField] private float coyoteTime;
+    public float coyoteTimeCounter;
+    
+
     [Space]
 
     [Header("Collision")]
@@ -29,6 +33,15 @@ public class Collision : MonoBehaviour
     void Update()
     {
         onGround = Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, collisionRadius, groundLayer);
+
+        if (onGround)
+        {
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
+        }
     }
 
     void OnDrawGizmos()
