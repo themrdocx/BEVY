@@ -59,12 +59,7 @@ public class GameManager : MonoBehaviour
         int volume = PlayerPrefs.GetInt("Volume",0);
         mixer.SetFloat("MasterVolume", Mathf.Clamp(volume, -80, 0));
     }
-
-    public void SetFullScreen(bool state)
-    {
-        Screen.fullScreen = state;
-    }
-
+    
     public void OpenGameUI()
     {
         isGamePaused = true;
