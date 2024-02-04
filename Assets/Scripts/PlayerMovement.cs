@@ -90,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
                 Jump(Vector2.up, false);
         }
 
-        if (Input.GetButtonDown("Fire1") && !hasDashed)
+        if (Input.GetButtonDown("Fire2") && !hasDashed)
         {
             if (xRaw != 0 || yRaw != 0 && !wallSlide)
                 Dash(xRaw, yRaw);
