@@ -7047,7 +7047,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33.227203, y: -23.089447, z: -10}
+  m_LocalPosition: {x: 20.457039, y: 65.00796, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11474,7 +11474,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 8181d6b32557dd54aad29edf4ae03d50, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -11485,7 +11485,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 10
+  MaxDistance: 7.309387
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -48677,11 +48677,11 @@ PrefabInstance:
     - target: {fileID: -7984972244846375751, guid: 4439a7d0c809be045bec5288f99fe687, type: 3}
       propertyPath: jumpSound
       value: 
-      objectReference: {fileID: 8300000, guid: b5803c17557c59c40bf3a6d69cb46cb3, type: 3}
+      objectReference: {fileID: 8300000, guid: e41252af35d67c34f99e3144f282f794, type: 3}
     - target: {fileID: -7984972244846375751, guid: 4439a7d0c809be045bec5288f99fe687, type: 3}
       propertyPath: landSounds.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 1876767bf7cbf284394dc3817af9593c, type: 3}
+      objectReference: {fileID: 8300000, guid: af8e817e14d97364886f237d61131515, type: 3}
     - target: {fileID: 2285588147045101880, guid: 4439a7d0c809be045bec5288f99fe687, type: 3}
       propertyPath: m_Size.x
       value: 0.57643414
@@ -48704,7 +48704,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3443674326371774432, guid: 4439a7d0c809be045bec5288f99fe687, type: 3}
       propertyPath: intensity
-      value: 2.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3443674326371774432, guid: 4439a7d0c809be045bec5288f99fe687, type: 3}
       propertyPath: dashShakeTime
