@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChangeCameraPos : MonoBehaviour
+public class SceneTransitioner : MonoBehaviour
 {
     public Vector3 pos;
     // Start is called before the first frame update
@@ -19,5 +19,10 @@ public class ChangeCameraPos : MonoBehaviour
     public void ChangePos()
     {
         Camera.main.transform.position = pos;
+    }
+
+    public void TransitionToGame()
+    {
+        
     }
 }
