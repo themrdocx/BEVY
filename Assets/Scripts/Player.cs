@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
 using Cinemachine;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [RequireComponent(typeof(PlayerMovement))]
 public class Player : MonoBehaviour
@@ -36,6 +34,22 @@ public class Player : MonoBehaviour
         currentRespawnPoint = defaultRespawnPoint;
 
         playerMovement.Dashed += OnDash;
+    }
+
+    private void Update()
+    {
+        if(GameManager.Instance.IsGamePaused)
+            return;
+        
+        if (Input.GetKeyDown(KeyCode.R) && !isDead)
+        {
+            ResetToLastPlayerFlag();
+        }
+    }
+
+    private void ResetToLastPlayerFlag()
+    {
+        transform.position = currentRespawnPoint.transform.position;
     }
 
     private void OnDash()

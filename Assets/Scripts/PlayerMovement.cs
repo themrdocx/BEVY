@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Polish")]
     public ParticleSystem dashParticle;
     public ParticleSystem jumpParticle;
-    
+
     void Start()
     {
         coll = GetComponent<Collision>();
@@ -52,6 +52,9 @@ public class PlayerMovement : MonoBehaviour
     
     void Update()
     {
+        if(GameManager.Instance.IsGamePaused)
+            return;
+        
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         float xRaw = Input.GetAxisRaw("Horizontal");
@@ -90,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
                 Jump(Vector2.up, false);
         }
 
-        if (Input.GetButtonDown("Fire2") && !hasDashed)
+        if (Input.GetButtonDown("Fire1") && !hasDashed)
         {
             if (xRaw != 0 || yRaw != 0 && !wallSlide)
                 Dash(xRaw, yRaw);
