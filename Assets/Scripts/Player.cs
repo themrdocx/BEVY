@@ -22,6 +22,16 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        GameManager.OnGameStartEvent += OnGameStart;
+        playerMovement.enabled = false;
+        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+    }
+
+    private void OnGameStart()
+    {
+        GameManager.OnGameStartEvent -= OnGameStart;
+        playerMovement.enabled = true;
+        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
     }
 
     private void OnEnable()
@@ -38,7 +48,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if(GameManager.Instance.IsGamePaused)
+        if(GameManager.Instance && GameManager.Instance.IsGamePaused)
             return;
         
         if (Input.GetKeyDown(KeyCode.R) && !isDead)
@@ -84,6 +94,7 @@ public class Player : MonoBehaviour
 
     private void ResetPlayer()
     {
+        cameraFade.OnFadeCompleteCallback -= ResetPlayer;
         if (!currentRespawnPoint)
             currentRespawnPoint = defaultRespawnPoint;
         transform.position = currentRespawnPoint.transform.position;

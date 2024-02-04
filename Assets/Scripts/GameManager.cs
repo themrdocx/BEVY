@@ -18,9 +18,16 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI timerText;
 
+    [SerializeField] private GameObject GameOverCutscene;
+
+    public delegate void OnGameStart();
+
+    public static event OnGameStart OnGameStartEvent;
+
     private int hours;
     private int minutes;
     private float seconds;
+    private bool isMenuOpen;
 
     private void Awake()
     {
@@ -34,8 +41,39 @@ public class GameManager : MonoBehaviour
         SetVolume();
     }
 
+    private void Start()
+    {
+        isGamePaused = true;
+        CameraFade fade = Camera.main.GetComponent<CameraFade>();
+        fade.ActivateFade();
+        fade.OnFadeCompleteCallback += StartGame;
+
+    }
+
+    private void StartGame()
+    {
+        Camera.main.GetComponent<CameraFade>().OnFadeCompleteCallback-=StartGame;
+        OnGameStartEvent?.Invoke();
+        isGamePaused = false;
+    }
+
+    private void ToggleMenu()
+    {
+        if(isMenuOpen)
+            CloseGameUI();
+        else
+        {
+            OpenGameUI();
+        }
+
+        isMenuOpen = !isMenuOpen;
+    }
+    
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Escape))
+            ToggleMenu();
+        
         if(isGamePaused)
             return;
 
@@ -68,6 +106,12 @@ public class GameManager : MonoBehaviour
         gameUI.SetActive(true);
     }
 
+    public void GameOver()
+    {
+        isGamePaused = true;
+        GameOverCutscene.SetActive(true);
+    }
+
     public void CloseGameUI()
     {
         Time.timeScale = 1;
@@ -76,6 +120,16 @@ public class GameManager : MonoBehaviour
         gameUI.SetActive(false);
     }
 
+    public void ToggleTimer()
+    {
+        if(timerText.gameObject.activeSelf)
+            timerText.gameObject.SetActive(false);
+        else
+        {
+            timerText.gameObject.SetActive(true);
+        }
+    }
+    
     public void QuitGame()
     {
         Application.Quit();
@@ -83,6 +137,8 @@ public class GameManager : MonoBehaviour
     
     public void RestartGame()
     {
+        instance = null;
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

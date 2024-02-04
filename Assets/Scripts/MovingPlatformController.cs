@@ -9,6 +9,7 @@ public class MovingPlatformController : MonoBehaviour
     
     private int currentWaypointIndex = 0;
     private Rigidbody2D rb;
+    [SerializeField] private bool notPlatform;
 
     private void Awake()
     {
@@ -43,6 +44,9 @@ public class MovingPlatformController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        if(notPlatform)
+            return;
+        
         var player = other.gameObject.GetComponent<Player>();
         
         player.gameObject.transform.SetParent(transform, true);
@@ -50,6 +54,9 @@ public class MovingPlatformController : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D other)
     {
+        if (notPlatform)
+            return;
+        
         var player = other.gameObject.GetComponent<Player>();
         
         player.gameObject.transform.SetParent(null);

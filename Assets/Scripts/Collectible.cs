@@ -13,7 +13,7 @@ public class Collectible : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private Color defaultColor;
-    private bool isCollected = false;
+    protected bool isCollected = false;
 
     private void Start()
     {

@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
     
     void Update()
     {
-        if(GameManager.Instance.IsGamePaused)
+        if(GameManager.Instance && GameManager.Instance.IsGamePaused)
             return;
         
         float x = Input.GetAxis("Horizontal");
