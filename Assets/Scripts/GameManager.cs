@@ -18,9 +18,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI timerText;
 
+    [SerializeField] private GameObject GameOverCutscene;
+
     private int hours;
     private int minutes;
     private float seconds;
+    private bool isMenuOpen;
 
     private void Awake()
     {
@@ -34,8 +37,23 @@ public class GameManager : MonoBehaviour
         SetVolume();
     }
 
+    private void ToggleMenu()
+    {
+        if(isMenuOpen)
+            OpenGameUI();
+        else
+        {
+            CloseGameUI();
+        }
+
+        isMenuOpen = !isMenuOpen;
+    }
+    
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Escape))
+            ToggleMenu();
+        
         if(isGamePaused)
             return;
 
@@ -68,6 +86,12 @@ public class GameManager : MonoBehaviour
         gameUI.SetActive(true);
     }
 
+    public void GameOver()
+    {
+        isGamePaused = true;
+        GameOverCutscene.SetActive(true);
+    }
+
     public void CloseGameUI()
     {
         Time.timeScale = 1;
@@ -76,6 +100,16 @@ public class GameManager : MonoBehaviour
         gameUI.SetActive(false);
     }
 
+    public void ToggleTimer()
+    {
+        if(timerText.gameObject.activeSelf)
+            timerText.gameObject.SetActive(false);
+        else
+        {
+            timerText.gameObject.SetActive(true);
+        }
+    }
+    
     public void QuitGame()
     {
         Application.Quit();

@@ -6468,7 +6468,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 491906686}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2075635353}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: RestartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &491906686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7033,7 +7045,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5496583, y: 86.992584, z: -10}
+  m_LocalPosition: {x: 20.457039, y: 54.67795, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9154,7 +9166,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2075635353}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ToggleTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1001 &694373773
 PrefabInstance:
@@ -11360,7 +11384,7 @@ GameObject:
   - component: {fileID: 928311901}
   - component: {fileID: 928311900}
   - component: {fileID: 928311899}
-  - component: {fileID: 928311898}
+  - component: {fileID: 928311902}
   m_Layer: 0
   m_Name: FinalItem
   m_TagString: Untagged
@@ -11368,22 +11392,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &928311898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 928311897}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 402174c0d74f11c41a78421a80926413, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 50
-  floatingSpeed: 1
-  resetTime: 2
-  inactiveColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!61 &928311899
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11413,7 +11421,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -11496,6 +11504,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 113520184}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &928311902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928311897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b897e79d673fde4794573dff3ff780c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 50
+  floatingSpeed: 1
+  resetTime: 2
+  inactiveColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &934158722
 GameObject:
   m_ObjectHideFlags: 0
@@ -45802,7 +45826,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1709441702}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2075635353}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1709441702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48620,6 +48656,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.2044487
       objectReference: {fileID: 0}
+    - target: {fileID: 2285588147045101880, guid: 4439a7d0c809be045bec5288f99fe687, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3443674326371774432, guid: 4439a7d0c809be045bec5288f99fe687, type: 3}
       propertyPath: intensity
       value: 2.5
@@ -48650,11 +48690,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6827999352377423695, guid: 4439a7d0c809be045bec5288f99fe687, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.12
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 6827999352377423695, guid: 4439a7d0c809be045bec5288f99fe687, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -50.04
+      value: 84.94
       objectReference: {fileID: 0}
     - target: {fileID: 6827999352377423695, guid: 4439a7d0c809be045bec5288f99fe687, type: 3}
       propertyPath: m_LocalPosition.z
@@ -49018,8 +49058,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: 2011db42ce275a048b4a5595c1ad950b, type: 2}
-  gameUI: {fileID: 0}
+  gameUI: {fileID: 1328218174}
   timerText: {fileID: 7728945}
+  GameOverCutscene: {fileID: 818370881}
 --- !u!1 &2089516622
 GameObject:
   m_ObjectHideFlags: 0
