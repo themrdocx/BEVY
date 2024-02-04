@@ -20,6 +20,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject GameOverCutscene;
 
+    public delegate void OnGameStart();
+
+    public static event OnGameStart OnGameStartEvent;
+
     private int hours;
     private int minutes;
     private float seconds;
@@ -37,13 +41,29 @@ public class GameManager : MonoBehaviour
         SetVolume();
     }
 
+    private void Start()
+    {
+        isGamePaused = true;
+        CameraFade fade = Camera.main.GetComponent<CameraFade>();
+        fade.ActivateFade();
+        fade.OnFadeCompleteCallback += StartGame;
+
+    }
+
+    private void StartGame()
+    {
+        Camera.main.GetComponent<CameraFade>().OnFadeCompleteCallback-=StartGame;
+        OnGameStartEvent?.Invoke();
+        isGamePaused = false;
+    }
+
     private void ToggleMenu()
     {
         if(isMenuOpen)
-            OpenGameUI();
+            CloseGameUI();
         else
         {
-            CloseGameUI();
+            OpenGameUI();
         }
 
         isMenuOpen = !isMenuOpen;
@@ -117,6 +137,8 @@ public class GameManager : MonoBehaviour
     
     public void RestartGame()
     {
+        instance = null;
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

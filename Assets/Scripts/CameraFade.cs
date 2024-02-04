@@ -52,6 +52,11 @@ public class CameraFade : MonoBehaviour
                  
         }
     }
+
+    /*public void FadeOut()
+    {
+        alpha = 1;
+    }*/
     public void OnGUI()
     {
         if (alpha > 0f) GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), texture);
