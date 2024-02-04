@@ -15,6 +15,8 @@ public class Collectible : MonoBehaviour
     private Color defaultColor;
     protected bool isCollected = false;
 
+    [SerializeField] private AudioSource audioSource;
+
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -34,6 +36,9 @@ public class Collectible : MonoBehaviour
     {
         if (other.GetComponent<Player>() && !isCollected)
         {
+            if(audioSource)
+                audioSource.Play();
+            
             Collect(other.gameObject);
         }
     }
